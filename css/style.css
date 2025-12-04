@@ -318,6 +318,7 @@
 }
 
 body {
+    zoom: 0.9;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--muted-gray);
@@ -563,9 +564,4 @@ footer {
 
 .iframe-no-border {
     border: 0 !important;
-}
-
-
-body {
-    zoom: 0.9;
 }
