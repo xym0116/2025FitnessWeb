@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Count - EZ Fitness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">EZ Fitness</div>
+    </header>
+
+   
+    <aside>
+        <ul class="no-padding">
+            <li><a href="home.html">Home / Introduction</a></li>
+            <li><a href="bmi.html">BMI Count</a></li>
+            <li><a href="3DMuscle.html">3D Muscle</a></li>
+            <li><a href="instructions.html">Steps Instruction</a>
+                <ul class="no-padding">
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upfront">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Front</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upback">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Back</a></li>
+                    <li class="bodypart no-border-bottom"><a
+                            href="instructions.html#lowfront">&nbsp;&nbsp;&nbsp;&nbsp;Low Front</a></li>
+                    <li class="bodypart"><a href="instructions.html#lowback">&nbsp;&nbsp;&nbsp;&nbsp;Low Back</a></li>
+                </ul>
+            </li>
+            <li><a href="game.html">Game</a></li>
+            <li><a href="ai-chat.html">AI Chat</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="spacer-50"></section>
+        <section id="bmi">
+            <div class="frame p-4">
+                <!-- <h1 class="text-center mb-4" style="color: #0f1724; font-weight: 700;">身體質量指數 (BMI) 計算器</h1>
+                <p class="lead text-center mb-5" style="color: var(--muted-gray);">
+                    輸入您的體重與身高（公斤 / 公分），系統將計算 BMI 並顯示建議範圍。
+                </p> -->
+
+                <!-- 想加圖片 -->
+                <div class="text-center mb-4">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="p-4 bg-light rounded-3 h-100" style="border: 2px solid var(--card-border);">
+                            <h2 class="h4 mb-3">BMI 計算</h2>
+                            <form id="bmiForm" class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="weight" class="form-label">體重 (公斤)</label>
+                                    <input type="number" step="0.1" class="form-control" id="weight"
+                                        placeholder="例如: 68.5" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="height" class="form-label">身高 (公分)</label>
+                                    <input type="number" step="0.1" class="form-control" id="height"
+                                        placeholder="例如: 172" required>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary me-2">計算 BMI</button>
+                                    <button type="button" id="resetBtn" class="btn btn-secondary">重設</button>
+                                </div>
+                            </form>
+                            <div id="result" class="mt-4">
+                                <div class="alert alert-info w-100 mb-0"
+                                    style="border-left: 4px solid var(--accent-blue);">
+                                    <strong>等待輸入...</strong>
+                                    <div>請輸入數值後點擊「計算 BMI」。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="h-100 p-4" style="border: 2px solid var(--card-border); border-radius: 0.375rem;">
+                            <h2 class="h4 mb-3">BMI 範圍說明</h2>
+                            <div class="table-responsive">
+                                <table class="table bmi-table-modern align-middle text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>BMI 範圍</th>
+                                            <th>分類</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>&lt; 18.5</td>
+                                            <td class="bmi-underweight">過輕</td>
+                                        </tr>
+                                        <tr>
+                                            <td>18.5 ~ 24.9</td>
+                                            <td class="bmi-normal">理想體重</td>
+                                        </tr>
+                                        <tr>
+                                            <td>25.0 ~ 29.9</td>
+                                            <td class="bmi-overweight">過重</td>
+                                        </tr>
+                                        <tr>
+                                            <td>&ge; 30.0</td>
+                                            <td class="bmi-obese">肥胖</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const form = document.getElementById('bmiForm');
+            const result = document.getElementById('result');
+            const resetBtn = document.getElementById('resetBtn');
+
+            function classify(bmi) {
+                if (bmi < 18.5) return { label: '過輕', color: '#0ea5e9', cls: 'result-underweight' };
+                if (bmi < 25) return { label: '理想體重', color: '#10b981', cls: 'result-normal' };
+                if (bmi < 30) return { label: '過重', color: '#f59e0b', cls: 'result-overweight' };
+                return { label: '肥胖', color: '#ef4444', cls: 'result-obese' };
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const weight = parseFloat(document.getElementById('weight').value);
+                const height = parseFloat(document.getElementById('height').value);
+
+                if (!weight || !height || weight <= 0 || height <= 0) {
+                    result.innerHTML = '<div class="alert alert-danger w-100 mb-0">請輸入正確的體重與身高（數值需大於 0）。</div>';
+                    return;
+                }
+
+                const heightM = height / 100;
+                const bmi = weight / (heightM * heightM);
+                const bmiRounded = Math.round(bmi * 10) / 10;
+                const cls = classify(bmi);
+
+                // 準備初始顯示 (避免在計算時出現空缺)
+                result.innerHTML = `
+                    <div class="bmi-result-card text-center" style="background-color: ${cls.color}1A; color: ${cls.color}; opacity: 0;">
+                        <strong><span id="bmi-value-display">0.0</span></strong>
+                        <div>判定：<span id="bmi-label-display" style="font-weight:600">${cls.label}</span></div>
+                    </div>
+                `;
+
+                // 獲取結果卡片
+                const resultCard = result.querySelector('.bmi-result-card');
+                resultCard.classList.add(cls.cls); // 添加特定動畫類別
+
+                // 數值計數動畫
+                const display = document.getElementById('bmi-value-display');
+                let current = 0;
+                const step = (bmiRounded / 60); // 60 步完成動畫
+                let i = 0;
+
+                const timer = setInterval(() => {
+                    current += step;
+                    i++;
+
+                    if (i >= 60) {
+                        clearInterval(timer);
+                        current = bmiRounded;
+                    }
+
+                    display.textContent = Math.round(current * 10) / 10;
+                }, 10); // 每 10 毫秒更新
+
+                // 設置延遲，讓卡片在計數動畫完成後顯示
+                setTimeout(() => {
+                    resultCard.style.opacity = '1';
+                }, 100);
+
+            });
+
+            resetBtn.addEventListener('click', function () {
+                form.reset();
+                result.innerHTML = `
+                    <div class="alert alert-info w-100 mb-0" style="border-left: 4px solid var(--accent-blue);">
+                        <strong>等待輸入...</strong>
+                        <div>請輸入數值後點擊「計算 BMI」。</div>
+                    </div>
+                `;
+            });
+
+            // 初始化時移除 frame 中的 h2 樣式，避免衝突
+            document.querySelectorAll('.frame h2').forEach(h2 => {
+                h2.style.borderBottom = 'none';
+                h2.style.paddingBottom = '0';
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

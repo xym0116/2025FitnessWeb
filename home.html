@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZ Fitness</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font-awesome -->
+    <script src="https://kit.fontawesome.com/04845a1939.js" crossorigin="anonymous"></script>
+    <!-- https://animate.style/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">EZ Fitness</div>
+    </header>
+
+    <aside>
+        <ul class="no-padding">
+            <li><a href="#introduction">Home / Introduction</a></li>
+            <li><a href="bmi.html">BMI Count</a></li>
+            <li><a href="3DMuscle.html">3D Muscle</a></li>
+            <li><a href="instructions.html">Steps Instruction</a>
+                <ul class="no-padding">
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upfront">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Front</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upback">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Back</a></li>
+                    <li class="bodypart no-border-bottom"><a
+                            href="instructions.html#lowfront">&nbsp;&nbsp;&nbsp;&nbsp;Low Front</a></li>
+                    <li class="bodypart"><a href="instructions.html#lowback">&nbsp;&nbsp;&nbsp;&nbsp;Low Back</a></li>
+                </ul>
+            </li>
+            <li><a href="game.html">Game</a></li>
+            <li><a href="ai-chat.html">AI Chat</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <!-- 原版 -->
+        <section class="spacer-50"></section>
+        <section id="introduction">
+            <div class="frame">
+                <h2>Introduction</h2>
+                <p>Welcome to our 'EZ Fitness' website.<br>
+                   This is a fitness teaching website that you can easily get started and live a healthier life.<br><br>
+                    Follow the steps :<br>
+                    1. Click on the 3D muscle map in the left column<br>
+                    2. View the areas you want to exercise through 3D muscle maps<br>
+                    3. Then select the part you want to exercise from the left column<br>
+                    4. Click the part<br>
+                    5. Choose muscles<br>
+                    6. Click one of exercise<br>
+                    7. View video and textual step-by-step instructions<br><br>
+                    YOU SUCCESS
+                </p>
+            </div>
+        </section>
+<!-- 
+        <section id="introduction" class="text-center">
+            <div class="frame p-5 shadow-lg" style="border: 2px solid var(--accent-blue); background-color: #f8fafc;">
+                <h2 class="animate__animated animate__backInDown display-3 fw-bold mb-4"
+                    style="color: #0b1220; letter-spacing: 6px;">
+                    EZ FITNESS <span style="color: var(--accent-blue);">// INITIATE</span>
+                </h2>
+
+                <div class="lead text-dark mb-5" style="border-left: 5px solid #0ea5e9;  padding-left: 20px;">
+                    <p class="animate__animated animate__fadeInDown animate__delay-1s fs-4 fw-light">
+                        [ ACCESS GRANTED ]
+                    </p>
+                    <p class="animate__animated animate__fadeInDown animate__delay-2s fs-5">
+                        我們提供**視覺化**、**精準化**的健身體驗，助您解鎖身體的無限潛能。
+                    </p>
+                    <p class="animate__animated animate__fadeInDown animate__delay-2-5s fs-5">
+                        **EZ Fitness**，您的**專屬體能數據庫**與**訓練導航系統**。
+                    </p>
+                </div>
+
+                <p class="fw-bold fs-4 mb-4 animate__animated animate__flash animate__delay-3s" style="color: #ef4444;">
+                    /// 系統導航：七步啟動訓練模組 ///
+                </p>
+
+                <div class="instruction-list text-start text-dark mx-auto" style="max-width: 650px;">
+                    <ul class="list-unstyled row g-3">
+                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInLeft animate__delay-4s">
+                            <span class="badge bg-primary me-2">01</span> **視覺定位**：進入 **3D Muscle** 鎖定目標肌群
+                        </li>
+                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInRight animate__delay-4-5s">
+                            <span class="badge bg-primary me-2">02</span> **區域選擇**：從左側選單選擇身體部位
+                        </li>
+                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInLeft animate__delay-5s">
+                            <span class="badge bg-primary me-2">03</span> **肌群確認**：點擊選擇特定**肌肉**名稱
+                        </li>
+                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInRight animate__delay-5-5s">
+                            <span class="badge bg-primary me-2">04</span> **項目檢索**：點選一個**訓練項目**
+                        </li>
+                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInLeft animate__delay-6s">
+                            <span class="badge bg-primary me-2">05</span> **影音學習**：觀看高畫質**示範影片**
+                        </li>
+                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInRight animate__delay-6-5s">
+                            <span class="badge bg-primary me-2">06</span> **步驟解析**：閱讀**詳細步驟說明**
+                        </li>
+                        <li class="col-12 mb-2 animate__animated animate__bounceInDown animate__delay-7s text-center">
+                            <span class="badge bg-danger me-2">07</span> **ACTION**：立即實踐！<i
+                                class="fas fa-bolt ms-2"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="animate__animated animate__rubberBand animate__delay-8s mt-5 fs-2 fw-bold"
+                    style="color: var(--accent-blue);">
+                    // MISSION COMPLETE //
+                </p>
+
+            </div>
+        </section> -->
+
+        <!-- 3D Muscle has been moved to its own page: 3DMuscle.html -->
+        <!-- Step Instructions have been moved to its own page: instructions.html -->
+    </main>
+
+    <!-- <footer>
+        <p>2025 EZ Fitness Start.</p>
+    </footer> -->
+
+</body>
+
+</html>

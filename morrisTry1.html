@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Start</title>
+    <!--Bootstrap-->
+    <style>
+        #tab-demo{ width:350px; height:200px;}
+        #tab-demo > ul{ display:block; margin:0;list-style:none;}
+        .tab-title{list-style:none;}
+        #tab-demo > ul > li{ display:inline-block; vertical-align:top;font-family:'微軟正黑體'; margin:0 -1px -1px 0 ; border:1px solid #BCBCBC; height:25px; line-height:25px; background:#cdcdcd;padding:0 15px;list-style:none; box-sizing:border-box;}
+        #tab-demo >  ul > li a{ color:#000; text-decoration:none;}
+        #tab-demo > ul > li.active{ border-bottom:1px solid #fff; background:#fff;}
+        #tab-demo > .tab-inner{ clear:both; color:#000; border:1px #BCBCBC solid;}
+        .tab-inner{ padding:15px; height:50px;}
+    </style>
+</head>
+
+<body>
+    <div id="tab-demo">
+        <ul class="tab-title">
+            <li><a href="#tab01">tab01</a></li>
+              <li><a href="#tab02">tab02</a></li>
+              <li><a href="#tab03">tab03</a></li>
+        </ul>
+        <div id="tab01" class="tab-inner">
+            <p>tab01的內容</p>
+        </div>
+        <div id="tab02" class="tab-inner">
+            <p>tab02的內容</p>
+        </div>
+        <div id="tab03" class="tab-inner">
+            <p>tab03的內容</p>
+        </div>
+    </div>
+    <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    var liElements = document.querySelectorAll("ul.tab-title li");
+    var activeTab = liElements[0];
+    var activeHref = activeTab.querySelector("a").getAttribute("href");
+    document.querySelector(activeHref).classList.add("active");
+    
+    // 隱藏其他的 tab-inner
+    document.querySelectorAll(".tab-inner").forEach(function (element) {
+        if (element !== document.querySelector(activeHref)) {
+            element.style.display = "none";
+        }
+    });
+
+    liElements.forEach(function (li) {
+        li.addEventListener("click", function () {
+            var currentHref = li.querySelector("a").getAttribute("href");
+
+            // 顯示選定的 tab-inner，隱藏其他
+            document.querySelectorAll(".tab-inner").forEach(function (element) {
+                element.style.display = element.id === currentHref.substring(1) ? "block" : "none";
+            });
+
+            // 更新 active 樣式
+            liElements.forEach(function (item) {
+                item.classList.remove("active");
+            });
+            li.classList.add("active");
+        });
+    });
+});
+
+    </script>
+   
+</body>
+</html>

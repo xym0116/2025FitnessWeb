@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - EZ Fitness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 遊戲核心樣式 */
+        .game-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 350px;
+            /* 增加高度以容納更大的角色 */
+            position: relative;
+        }
+
+        /* 派大星點擊目標 */
+        .click-target {
+            position: absolute;
+            bottom: 30px;
+            right: 50px;
+            font-size: 80px;
+            /* 讓派大星更大 */
+            cursor: pointer;
+            transition: transform 0.1s ease, filter 0.1s ease;
+            /* user-select: none; */
+        }
+
+        /* 派大星點擊時的閃爍效果 (New!) */
+        .click-target.clicked {
+            transform: scale(0.95);
+            filter: drop-shadow(0 0 10px #ff69b4);
+            /* 粉紅色光暈 */
+        }
+
+        /* 海綿寶寶人物 */
+        .spongebob-person {
+            font-size: 150px;
+            /* 放大海綿寶寶 */
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            /* 更誇張的彈性過渡 */
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 滿級勝利動畫 (New!) */
+        .spongebob-person.champion {
+            animation: pulse-glow 1.5s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from {
+                filter: drop-shadow(0 0 8px #ffeb3b) drop-shadow(0 0 15px #0ea5e9);
+                transform: scale(1.4);
+            }
+
+            to {
+                filter: drop-shadow(0 0 15px #ffeb3b) drop-shadow(0 0 25px #0ea5e9);
+                transform: scale(1.45);
+            }
+        }
+
+
+        .stats {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .strength-bar {
+            width: 100%;
+            height: 35px;
+            /* 稍微加高力量條 */
+            background-color: #e0e0e0;
+            border-radius: 18px;
+            margin-top: 15px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .strength-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffeb3b, #0ea5e9);
+            /* 海綿寶寶主題色 */
+            width: 0%;
+            transition: width 0.4s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f172a;
+            /* 深色字體 */
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="title">EZ Fitness</div>
+    </header>
+
+    <aside>
+        <ul class="no-padding">
+            <li><a href="home.html">Home / Introduction</a></li>
+            <li><a href="bmi.html">BMI Count</a></li>
+            <li><a href="3DMuscle.html">3D Muscle</a></li>
+            <li><a href="instructions.html">Steps Instruction</a>
+                <ul class="no-padding">
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upfront">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Front</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upback">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Back</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#lowfront">&nbsp;&nbsp;&nbsp;&nbsp;Low
+                            Front</a></li>
+                    <li class="bodypart"><a href="instructions.html#lowback">&nbsp;&nbsp;&nbsp;&nbsp;Low Back</a></li>
+                </ul>
+            </li>
+            <li><a href="game.html">Game</a></li>
+            <li><a href="ai-chat.html">AI Chat</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="spacer-50"></section>
+        <section id="game">
+            <div class="frame">
+                <!-- <h2>Bikini Bottom Workout Game 蟹堡王健身遊戲</h2> -->
+
+                <div class="game-container">
+                    <div class="spongebob-person" id="spongebob">🧽</div>
+                    <div class="click-target" id="patrick">
+                        <img src="svg/spongebob1.1.png" alt="可愛海綿寶寶" class="spongebob-icon">
+                    </div>
+                </div>
+
+                <div class="stats">
+                    <div>
+                        <strong>Strongness Level: <span id="strengthLevel">0</span>/100</strong>
+                    </div>
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <div class="mt-3 text-secondary">
+                        <p id="message">Feed Patrick! 餵食派大星，讓海綿寶寶變強壯！</p>
+                    </div>
+                    <button type="button" id="resetBtn" class="btn btn-secondary reset-btn">Reset Game 重設遊戲</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            let strengthLevel = 0;
+            const maxStrength = 100;
+            const patrick = document.getElementById('patrick'); // 派大星點擊目標
+            const spongebob = document.getElementById('spongebob'); // 海綿寶寶人物
+            const strengthLevelDisplay = document.getElementById('strengthLevel');
+            const strengthFill = document.getElementById('strengthFill');
+            const message = document.getElementById('message');
+            const resetBtn = document.getElementById('resetBtn');
+
+            // --- 音效函數：更酷的電子音效 ---
+            function playSound(frequency = 800) {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                oscillator.type = 'square'; // 使用方波讓聲音更電子化
+
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15); // 稍微延長音效
+
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.15);
+            }
+
+            function updateStrength() {
+                if (strengthLevel >= maxStrength) {
+                    message.textContent = 'Already a CHAMPION! 他已經是冠軍了！';
+                    message.style.color = '#ff69b4';
+                    return;
+                }
+
+                // 增加力量值
+                strengthLevel = Math.min(strengthLevel + 5, maxStrength);
+                strengthLevelDisplay.textContent = strengthLevel;
+
+                const percentage = (strengthLevel / maxStrength) * 100;
+                strengthFill.style.width = percentage + '%';
+                strengthFill.textContent = percentage > 10 ? Math.round(percentage) + '%' : '';
+
+                // --- 根據力量等級更新海綿寶寶外觀 ---
+                spongebob.classList.remove('champion'); // 重置冠軍狀態
+
+                if (strengthLevel < 20) {
+                    spongebob.textContent = '🥺'; // 軟弱的臉
+                    spongebob.style.transform = 'scale(1)';
+                } else if (strengthLevel < 40) {
+                    spongebob.textContent = '😄'; // 稍微開心
+                    spongebob.style.transform = 'scale(1.1) rotate(-2deg)';
+                } else if (strengthLevel < 60) {
+                    spongebob.textContent = '😎'; // 戴上墨鏡
+                    spongebob.style.transform = 'scale(1.2) rotate(2deg)';
+                } else if (strengthLevel < 80) {
+                    spongebob.textContent = '💪😎'; // 秀出肌肉
+                    spongebob.style.transform = 'scale(1.3) rotate(0deg)';
+                } else if (strengthLevel < 100) {
+                    spongebob.textContent = '🦾💪😎'; // 變超級賽亞人
+                    spongebob.style.transform = 'scale(1.4) rotate(5deg)';
+                } else {
+                    // 達到滿級
+                    spongebob.textContent = '⭐🦾💪';
+                    spongebob.style.transform = 'scale(1.4)';
+                    spongebob.classList.add('champion'); // 啟用冠軍動畫
+                    message.textContent = '🎉 You are a Bikini Bottom CHAMPION! 比奇堡冠軍！';
+                    message.style.color = '#ff69b4';
+                    playSound(1200); // 滿級時播放更高音的勝利音效
+                    return; // 滿級後不執行後續訊息更新
+                }
+
+                // --- 訊息更新 ---
+                if (strengthLevel >= 80) {
+                    message.textContent = 'Almost there, Spongebob! 快到了，海綿寶寶！';
+                    message.style.color = '#0ea5e9';
+                } else if (strengthLevel >= 50) {
+                    message.textContent = 'Great Progress! Keep feeding Patrick! 進度很好！繼續餵食派大星！';
+                    message.style.color = '#f59e0b';
+                } else if (strengthLevel >= 20) {
+                    message.textContent = 'He is getting stronger! 他越來越強了！';
+                    message.style.color = '#f59e0b';
+                } else {
+                    message.textContent = 'Feed Patrick! 餵食派大星，讓海綿寶寶變強壯！';
+                    message.style.color = '#6b7280';
+                }
+            }
+
+            // 派大星點擊事件
+            patrick.addEventListener('click', function () {
+                playSound();
+                updateStrength();
+
+                // 加入點擊閃爍動畫
+                patrick.classList.add('clicked');
+                setTimeout(() => {
+                    patrick.classList.remove('clicked');
+                }, 150);
+            });
+
+            // 重設按鈕
+            resetBtn.addEventListener('click', function () {
+                strengthLevel = 0;
+                strengthLevelDisplay.textContent = '0';
+                strengthFill.style.width = '0%';
+                strengthFill.textContent = '';
+                spongebob.textContent = '🥺';
+                spongebob.style.transform = 'scale(1)';
+                spongebob.classList.remove('champion');
+                message.textContent = 'Feed Patrick! 餵食派大星，讓海綿寶寶變強壯！';
+                message.style.color = '#6b7280';
+            });
+
+            // 鍵盤捷徑 (空白鍵)
+            document.addEventListener('keydown', function (e) {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    patrick.click();
+                }
+            });
+        })();
+    </script>
+
+    <footer>
+        <p>2025 EZ Fitness Start.</p>
+    </footer>
+
+</body>
+
+</html>

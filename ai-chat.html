@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat - EZ Fitness</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font-awesome -->
+    <script src="https://kit.fontawesome.com/04845a1939.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* #ai-chat h2 {
+            margin-bottom: 8px !important;
+        } */
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #000000;
+        }
+
+        .message {
+            display: flex;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        .user .message-content {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot .message-content {
+            background-color: #e9ecef;
+            color: #1f2937;
+            border-bottom-left-radius: 4px;
+        }
+
+        .bot-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 10px;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-left: 10px;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #9ca3af;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.5;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            background-color: #ffffff;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input-area input:focus {
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .send-btn:active {
+            transform: scale(0.95);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .clear-btn {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+
+        .clear-btn:hover {
+            background-color: #dc2626;
+        }
+
+        .chat-header {
+            padding: 15px;
+            /* background: linear-gradient(135deg, #0ea5e9, #0284c7); */
+            background: linear-gradient(145deg, #0e66e9, #c70902);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #0284c7;
+        }
+
+        .chat-header h4 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Scrollbar styling */
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #9ca3af;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .empty-state i {
+            font-size: 48px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="title">EZ Fitness</div>
+    </header>
+
+    <aside>
+        <ul class="no-padding">
+            <li><a href="home.html">Home / Introduction</a></li>
+            <li><a href="bmi.html">BMI Count</a></li>
+            <li><a href="3DMuscle.html">3D Muscle</a></li>
+            <li><a href="instructions.html">Steps Instruction</a>
+                <ul class="no-padding">
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upfront">&nbsp;&nbsp;&nbsp;&nbsp;Up Front</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upback">&nbsp;&nbsp;&nbsp;&nbsp;Up Back</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#lowfront">&nbsp;&nbsp;&nbsp;&nbsp;Low Front</a></li>
+                    <li class="bodypart"><a href="instructions.html#lowback">&nbsp;&nbsp;&nbsp;&nbsp;Low Back</a></li>
+                </ul>
+            </li>
+            <li><a href="game.html">Game</a></li>
+            <li><a href="ai-chat.html">AI Chat</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="spacer-50"></section>
+        <section id="ai-chat">
+            <div class="frame">
+                <!-- <h2>AI Fitness Chat</h2> -->
+                <!-- <p>Get personalized fitness advice from our AI assistant. Ask about exercises, nutrition, and health tips!</p> -->
+                
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h4>
+                            <span class="status-indicator"></span>
+                            EZ Fitness AI Assistant
+                        </h4>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="empty-state">
+                            <i class="fas fa-robot"></i>
+                            <p>Hello! 👋 I'm your fitness assistant. Ask me anything about exercises, workouts, nutrition, or fitness tips!</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <input type="text" id="userInput" placeholder="Ask me about fitness, exercises, or nutrition..." autocomplete="off">
+                        <button class="send-btn" id="sendBtn" title="Send message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="clear-btn" id="clearBtn">
+                    <i class="fas fa-trash"></i> Clear Chat
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- <footer>
+        <p>2025 EZ Fitness Start.</p>
+    </footer> -->
+
+    <script>
+        (function () {
+            const chatMessages = document.getElementById('chatMessages');
+            const userInput = document.getElementById('userInput');
+            const sendBtn = document.getElementById('sendBtn');
+            const clearBtn = document.getElementById('clearBtn');
+
+            // Fitness-related knowledge base for local responses
+            const fitnessResponses = {
+                chest: [
+                    "Great question! For chest exercises, try: Push-ups, Bench Press, Dumbbell Flyes, Cable Crossovers, or Chest Press machines. Start with 3 sets of 8-12 reps.",
+                    "The chest includes pectoralis major and minor. Best exercises for chest development are compound movements like bench press, combined with isolation exercises like flyes."
+                ],
+                shoulder: [
+                    "Shoulder exercises: Overhead Press, Lateral Raises, Front Raises, Reverse Flyes, and Shrugs. Do 3-4 sets of 10-12 reps per exercise.",
+                    "Your shoulders are worked by overhead pressing movements. Include vertical and horizontal pressing for complete development."
+                ],
+                back: [
+                    "Back exercises: Pull-ups, Lat Pulldowns, Barbell Rows, Dumbbell Rows, and Face Pulls. Aim for 3-4 sets of 8-12 reps.",
+                    "A strong back requires both vertical pulls (pull-ups) and horizontal pulls (rows). Train your back 2x per week."
+                ],
+                bicep: [
+                    "Bicep exercises: Barbell Curls, Dumbbell Curls, Cable Curls, Hammer Curls, and Preacher Curls. Do 3-4 sets of 8-12 reps.",
+                    "Biceps are best trained with curling movements. Vary your grip width for complete muscle development."
+                ],
+                tricep: [
+                    "Tricep exercises: Tricep Dips, Rope Pushdowns, Skull Crushers, Overhead Extensions, and Close-Grip Bench Press.",
+                    "Triceps make up 2/3 of arm mass. Include both pressing and extension movements in your routine."
+                ],
+                leg: [
+                    "Leg exercises: Squats, Leg Press, Leg Curls, Leg Extensions, Lunges, and Calf Raises. Do 3-4 sets of 10-15 reps.",
+                    "Train your legs 2x per week with compound movements like squats combined with isolation exercises."
+                ],
+                cardio: [
+                    "Cardio options: Running, Cycling, Rowing, Swimming, or HIIT training. Start with 20-30 minutes, 3-4 times per week.",
+                    "Mix steady-state cardio with high-intensity interval training (HIIT) for best fat loss results."
+                ],
+                nutrition: [
+                    "Key nutrition tips: Eat protein with every meal (0.7-1g per lb bodyweight), include complex carbs, healthy fats, and stay hydrated.",
+                    "For muscle growth, eat in a slight calorie surplus. For fat loss, maintain a deficit of 300-500 calories below maintenance."
+                ],
+                bmi: [
+                    "BMI (Body Mass Index) is calculated as: weight (kg) / height (m)². Healthy range is 18.5-24.9.",
+                    "Use our BMI Count tool to calculate your BMI and get personalized recommendations based on your results."
+                ],
+                warm: [
+                    "Always warm up for 5-10 minutes before training. Include dynamic stretches and light cardio to increase heart rate and prepare muscles.",
+                    "Good warm-ups include: arm circles, leg swings, light jogging, and bodyweight movements."
+                ],
+                recovery: [
+                    "Recovery is crucial: Get 7-9 hours of quality sleep, stay hydrated, and don't train the same muscle group on consecutive days.",
+                    "Include rest days in your routine. Active recovery (light walking, stretching) can help on off days."
+                ]
+            };
+
+            // Function to get AI response based on keywords
+            function getAIResponse(userMessage) {
+                const message = userMessage.toLowerCase();
+                
+                // Check for keywords and return relevant responses
+                for (const [key, responses] of Object.entries(fitnessResponses)) {
+                    if (message.includes(key)) {
+                        return responses[Math.floor(Math.random() * responses.length)];
+                    }
+                }
+
+                // Default responses
+                const defaultResponses = [
+                    "That's a great fitness question! I specialize in exercises, workouts, nutrition, and fitness tips. Ask me about any specific muscle group or workout routine!",
+                    "I'm here to help with fitness advice! Try asking about specific exercises like 'chest', 'back', 'legs', or 'nutrition'.",
+                    "Nice question! For more specific advice, try asking about a particular body part or fitness topic.",
+                    "I can help with that! Ask me about exercises, workout routines, nutrition, or fitness tips. What would you like to know?"
+                ];
+
+                return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+            }
+
+            // Add message to chat
+            function addMessage(content, isUser) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+
+                if (isUser) {
+                    messageDiv.innerHTML = `
+                        <div class="message-content">${escapeHtml(content)}</div>
+                        <div class="user-icon"><i class="fas fa-user"></i></div>
+                    `;
+                } else {
+                    messageDiv.innerHTML = `
+                        <div class="bot-icon"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">${escapeHtml(content)}</div>
+                    `;
+                }
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Remove empty state
+            function removeEmptyState() {
+                const emptyState = chatMessages.querySelector('.empty-state');
+                if (emptyState) {
+                    emptyState.remove();
+                }
+            }
+
+            // Show typing indicator
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot';
+                typingDiv.id = 'typingIndicator';
+                typingDiv.innerHTML = `
+                    <div class="bot-icon"><i class="fas fa-robot"></i></div>
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Remove typing indicator
+            function removeTypingIndicator() {
+                const typing = document.getElementById('typingIndicator');
+                if (typing) {
+                    typing.remove();
+                }
+            }
+
+            // Escape HTML to prevent XSS
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Handle sending message
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (!message) return;
+
+                removeEmptyState();
+                addMessage(message, true);
+                userInput.value = '';
+                userInput.focus();
+                sendBtn.disabled = true;
+
+                // Simulate bot thinking
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    const response = getAIResponse(message);
+                    addMessage(response, false);
+                    sendBtn.disabled = false;
+                }, 800 + Math.random() * 700);
+
+                showTypingIndicator();
+            }
+
+            // Send button click
+            sendBtn.addEventListener('click', sendMessage);
+
+            // Enter key to send
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Clear chat
+            clearBtn.addEventListener('click', () => {
+                chatMessages.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-robot"></i>
+                        <p>Hello! 👋 I'm your fitness assistant. Ask me anything about exercises, workouts, nutrition, or fitness tips!</p>
+                    </div>
+                `;
+                userInput.value = '';
+                userInput.focus();
+            });
+
+            // Focus input on load
+            userInput.focus();
+        })();
+    </script>
+
+</body>
+
+</html>
