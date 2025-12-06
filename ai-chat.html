@@ -45,6 +45,7 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -130,10 +131,14 @@
         }
 
         @keyframes typing {
-            0%, 60%, 100% {
+
+            0%,
+            60%,
+            100% {
                 opacity: 0.5;
                 transform: translateY(0);
             }
+
             30% {
                 opacity: 1;
                 transform: translateY(-10px);
@@ -235,9 +240,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.5;
             }
@@ -291,14 +299,17 @@
             <li><a href="3DMuscle.html">3D Muscle</a></li>
             <li><a href="instructions.html">Steps Instruction</a>
                 <ul class="no-padding">
-                    <li class="bodypart no-border-bottom"><a href="instructions.html#upfront">&nbsp;&nbsp;&nbsp;&nbsp;Up Front</a></li>
-                    <li class="bodypart no-border-bottom"><a href="instructions.html#upback">&nbsp;&nbsp;&nbsp;&nbsp;Up Back</a></li>
-                    <li class="bodypart no-border-bottom"><a href="instructions.html#lowfront">&nbsp;&nbsp;&nbsp;&nbsp;Low Front</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upfront">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Front</a></li>
+                    <li class="bodypart no-border-bottom"><a href="instructions.html#upback">&nbsp;&nbsp;&nbsp;&nbsp;Up
+                            Back</a></li>
+                    <li class="bodypart no-border-bottom"><a
+                            href="instructions.html#lowfront">&nbsp;&nbsp;&nbsp;&nbsp;Low Front</a></li>
                     <li class="bodypart"><a href="instructions.html#lowback">&nbsp;&nbsp;&nbsp;&nbsp;Low Back</a></li>
                 </ul>
             </li>
-            <li><a href="game.html">Game</a></li>
             <li><a href="ai-chat.html">AI Chat</a></li>
+            <li><a href="game.html">Game</a></li>
         </ul>
     </aside>
 
@@ -308,7 +319,7 @@
             <div class="frame">
                 <!-- <h2>AI Fitness Chat</h2> -->
                 <!-- <p>Get personalized fitness advice from our AI assistant. Ask about exercises, nutrition, and health tips!</p> -->
-                
+
                 <div class="chat-container">
                     <div class="chat-header">
                         <h4>
@@ -316,16 +327,18 @@
                             EZ Fitness AI Assistant
                         </h4>
                     </div>
-                    
+
                     <div class="chat-messages" id="chatMessages">
                         <div class="empty-state">
                             <i class="fas fa-robot"></i>
-                            <p>Hello! 👋 I'm your fitness assistant. Ask me anything about exercises, workouts, nutrition, or fitness tips!</p>
+                            <p>Hello! 👋 I'm your fitness assistant. Ask me anything about exercises, workouts,
+                                nutrition, or fitness tips!</p>
                         </div>
                     </div>
 
                     <div class="chat-input-area">
-                        <input type="text" id="userInput" placeholder="Ask me about fitness, exercises, or nutrition..." autocomplete="off">
+                        <input type="text" id="userInput" placeholder="Ask me about fitness, exercises, or nutrition..."
+                            autocomplete="off">
                         <button class="send-btn" id="sendBtn" title="Send message">
                             <i class="fas fa-paper-plane"></i>
                         </button>
@@ -401,7 +414,7 @@
             // Function to get AI response based on keywords
             function getAIResponse(userMessage) {
                 const message = userMessage.toLowerCase();
-                
+
                 // Check for keywords and return relevant responses
                 for (const [key, responses] of Object.entries(fitnessResponses)) {
                     if (message.includes(key)) {
