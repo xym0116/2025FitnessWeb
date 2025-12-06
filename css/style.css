@@ -1,3 +1,75 @@
+/* --- New Styles for Premium/Tech Feel on Dark Background --- */
+
+/* Feature Card Base Style */
+.feature-card {
+    /* 深色背景上的卡片輕微發光效果 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid #2d3748 !important; /* 深色細邊框 */
+}
+
+/* Card Hover Effect: Lift, Deeper Shadow, and Subtle Glow */
+.card-link-hover:hover .feature-card {
+    transform: translateY(-8px); /* 向上抬升更多 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important; /* 增加陰影深度 */
+    /* background-color: #1a202c !important; /* 滑過時略微變亮 */
+}
+
+/* 移除通用 hover 顏色設置，改為分項設置 */
+/* .card-link-hover:hover .card-title { color: var(--accent-blue) !important; } */
+
+
+/* NEW: Specific Feature Card Hover Colors (Matching Top Accent Color) */
+#features .col:nth-child(1) .card-link-hover:hover .card-title {
+    color: #0ea5e9 !important; /* Blue (BMI) */
+}
+#features .col:nth-child(2) .card-link-hover:hover .card-title {
+    color: #10b981 !important; /* Green (3D Muscle) */
+}
+#features .col:nth-child(3) .card-link-hover:hover .card-title {
+    color: #f59e0b !important; /* Orange (Videos) */
+}
+#features .col:nth-child(4) .card-link-hover:hover .card-title {
+    color: #ef4444 !important; /* Red (AI Chat) */
+}
+#features .col:nth-child(5) .card-link-hover:hover .card-title {
+    color: #8b5cf6 !important; /* Purple (Game) */
+}
+
+/* NEW: Premium Hover for Quick Guide Cards */
+#quick-guide .col-md-4 > div {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid #1f2937; /* Add subtle initial border */
+}
+
+#quick-guide .col-md-4 > div:hover {
+    transform: scale(1.03); /* Subtle scale up */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Stronger glow/shadow */
+    background-color: #111827 !important; /* Darker background on hover */
+}
+
+/* Ensure text in card is visible on hover in dark mode */
+.card-link-hover:hover .card-text {
+    /* 調整顏色為純白色，確保最佳可讀性 */
+    color: #ffffff !important; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* BMI Table Category Colors */
 .bmi-underweight {
     color: #0ea5e9;
@@ -460,6 +532,7 @@ aside ul li a:hover {
 /* Main Content Styles */
 main {
     margin-left: 260px;
+
     /* Adjust based on sidebar width */
     padding: 48px;
     padding-top: 18px;

@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZ Fitness</title>
-    <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Font-awesome -->
     <script src="https://kit.fontawesome.com/04845a1939.js" crossorigin="anonymous"></script>
-    <!-- https://animate.style/ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <!-- Template CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <audio id="background-music" loop autoplay>
+        <source src="audio/babyshark.mp3" type="audio/mp3">
+        您的瀏覽器不支持音頻播放。
+    </audio>
+
     <header>
         <div class="title">EZ Fitness</div>
     </header>
@@ -46,11 +47,457 @@
     </aside>
 
     <main>
-        <!-- 原版 -->
         <section class="spacer-50"></section>
+
+        <section id="introduction" class="text-center py-5">
+            <div class="container">
+                <div class="row align-items-center mb-5 gx-5">
+                    <div class="col-lg-5 text-center order-lg-1 order-2">
+                        <img src="svg/spongebob_home_1_1.png" alt="Spongebob Exercising Illustration"
+                            class="img-fluid rounded-3 shadow-lg animate__animated animate__zoomIn"
+                            style="max-height: 450px; object-fit: cover;">
+                    </div>
+
+                    <div class="col-lg-7 order-lg-2 order-1 text-lg-start animate__animated animate__fadeInRight">
+                        <h1 class="display-3 fw-bolder mb-3"
+                            style="color: var(--panel-white); border-bottom: 5px solid #10b981; display: inline-block; padding-bottom: 8px;">
+                            <span style="color: var(--accent-blue);">EZ</span> FITNESS
+                        </h1>
+
+                        <h2
+                            class="display-6 fw-light mb-4 text-white animate__animated animate__fadeInUp animate__delay-1s">
+                            // INITIATE YOUR <span style="color: #10b981;">TRANSFORMATION</span>
+                        </h2>
+
+                        <p class="lead text-light mb-5"
+                            style="border-left: 4px solid var(--accent-blue); padding-left: 15px;">
+                            <i class="fas fa-microchip me-2" style="color: #10b981;"></i>
+                            **Welcome to the EZ Fitness Platform.**
+                            <br>
+                            Start your fitness journey with **intelligent guidance**, precise **body metrics**, and
+                            **immersive training modules**. We are your smart partner for a healthier life.
+                        </p>
+
+                        <a href="bmi.html"
+                            class="btn btn-lg fw-bold px-5 py-3 shadow-lg text-uppercase animate__animated animate__pulse animate__infinite"
+                            style="background-color: #10b981; color: var(--bg-dark); transition: all 0.3s;"
+                            onmouseover="this.style.backgroundColor='var(--accent-blue)'; this.style.color='white';"
+                            onmouseout="this.style.backgroundColor='#10b981'; this.style.color='var(--bg-dark)';">
+                            <i class="fas fa-play me-2"></i> Access Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border-color: #2d3748; margin-top: 50px; margin-bottom: 50px;">
+
+        <section id="features" class="pb-5">
+            <div class="container">
+                <h2 class="text-center mb-5 fw-bold text-white animate__animated animate__fadeInDown no-h2-border">
+                    <i class="fas fa-rocket me-2" style="color: var(--accent-blue);"></i> CORE FITNESS MODULES
+                </h2>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4">
+                    <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                        <a href="bmi.html" class="card-link-hover no-underline">
+                            <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card text-start"
+                                style="border-top: 5px solid #0ea5e9 !important;">
+                                <div class="card-body">
+                                    <i class="fas fa-calculator fa-3x mb-3" style="color: #0ea5e9;"></i>
+                                    <h5 class="card-title fw-bold text-white">1. BMI COUNT</h5>
+                                    <p class="card-text text-light">Precise Body Mass Index calculation for health
+                                        metrics.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                        <a href="3DMuscle.html" class="card-link-hover no-underline">
+                            <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card text-start"
+                                style="border-top: 5px solid #10b981 !important;">
+                                <div class="card-body">
+                                    <i class="fas fa-dumbbell fa-3x mb-3" style="color: #10b981;"></i>
+                                    <h5 class="card-title fw-bold text-white">2. 3D MUSCLE MAP</h5>
+                                    <p class="card-text text-light">Visualize target muscle groups with an interactive
+                                        3D model.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                        <a href="instructions.html" class="card-link-hover no-underline">
+                            <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card text-start"
+                                style="border-top: 5px solid #f59e0b !important;">
+                                <div class="card-body">
+                                    <i class="fas fa-video fa-3x mb-3" style="color: #f59e0b;"></i>
+                                    <h5 class="card-title fw-bold text-white">3. TRAINING VIDEOS</h5>
+                                    <p class="card-text text-light">Follow step-by-step video instructions for perfect
+                                        form.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+                        <a href="ai-chat.html" class="card-link-hover no-underline">
+                            <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card text-start"
+                                style="border-top: 5px solid #ef4444 !important;">
+                                <div class="card-body">
+                                    <i class="fas fa-robot fa-3x mb-3" style="color: #ef4444;"></i>
+                                    <h5 class="card-title fw-bold text-white">4. AI ASSISTANT</h5>
+                                    <p class="card-text text-light">24/7 support for fitness Q&A and personalized
+                                        advice.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col animate__animated animate__fadeInUp" style="animation-delay: 1.0s;">
+                        <a href="game.html" class="card-link-hover no-underline">
+                            <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card text-start"
+                                style="border-top: 5px solid #8b5cf6 !important;">
+                                <div class="card-body">
+                                    <i class="fas fa-gamepad fa-3x mb-3" style="color: #8b5cf6;"></i>
+                                    <h5 class="card-title fw-bold text-white">5. FITNESS GAME</h5>
+                                    <p class="card-text text-light">Make exercising fun and engaging with our
+                                        interactive game.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr style="border-color: #2d3748; margin-top: 50px; margin-bottom: 50px;">
+
+        <section id="quick-guide" class="pb-5">
+            <div class="container">
+                <h3 class="fw-bold mb-4 text-white animate__animated animate__fadeInLeft">
+                    <i class="fas fa-map-marked-alt me-2" style="color: #10b981;"></i> QUICK START GUIDANCE
+                </h3>
+
+                <div class="row g-4 text-light">
+                    <div class="col-md-4 animate__animated animate__slideInUp" style="animation-delay: 0.2s;">
+                        <div class="p-4 rounded shadow-sm"
+                            style="background-color: #1f2937; border-left: 5px solid #0ea5e9;">
+                            <span class="badge rounded-pill me-2 fs-5" style="background-color: #0ea5e9;">Step 1</span>
+                            <p class="mt-2 mb-0 fw-bold text-white">Target Identification:</p>
+                            <p class="mb-0 text-light">Use **3D Muscle Map** to find your desired muscle group.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 animate__animated animate__slideInUp" style="animation-delay: 0.4s;">
+                        <div class="p-4 rounded shadow-sm"
+                            style="background-color: #1f2937; border-left: 5px solid #10b981;">
+                            <span class="badge rounded-pill me-2 fs-5" style="background-color: #10b981;">Step 2</span>
+                            <p class="mt-2 mb-0 fw-bold text-white">Instruction Access:</p>
+                            <p class="mb-0 text-light">Navigate to **Steps Instruction** and select the body part.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 animate__animated animate__slideInUp" style="animation-delay: 0.6s;">
+                        <div class="p-4 rounded shadow-sm"
+                            style="background-color: #1f2937; border-left: 5px solid #f59e0b;">
+                            <span class="badge rounded-pill me-2 fs-5" style="background-color: #f59e0b;">Step 3</span>
+                            <p class="mt-2 mb-0 fw-bold text-white">Execute Training:</p>
+                            <p class="mb-0 text-light">Watch the **Video** and start your workout! <i
+                                    class="fas fa-bolt ms-1"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
+
+
+<!-- ver4 -->
+<!-- <main>
+    <section class="spacer-50"></section>
+    
+    <section id="introduction" class="text-center py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5 gx-5">
+                <div class="col-lg-5 text-center order-lg-1 order-2">
+                    <img src="svg/spongebob_home_1_1.png" alt="Spongebob Exercising Illustration" 
+                         class="img-fluid rounded-3 shadow-lg animate__animated animate__zoomIn" 
+                         style="max-height: 450px; object-fit: cover; border: 3px solid var(--accent-blue);">
+                </div>
+                
+                <div class="col-lg-7 order-lg-2 order-1 text-lg-start animate__animated animate__fadeInRight">
+                    <h1 class="display-3 fw-bolder mb-3" style="color: var(--panel-white); border-bottom: 5px solid #10b981; display: inline-block; padding-bottom: 8px;">
+                        <span style="color: var(--accent-blue);">EZ</span> FITNESS
+                    </h1>
+                    
+                    <h2 class="display-6 fw-light mb-4 text-white animate__animated animate__fadeInUp animate__delay-1s">
+                        // INITIATE YOUR <span style="color: #10b981;">TRANSFORMATION</span>
+                    </h2>
+
+                    <p class="lead text-light mb-5" style="border-left: 4px solid var(--accent-blue); padding-left: 15px;">
+                        <i class="fas fa-microchip me-2" style="color: #10b981;"></i>
+                        **Welcome to the EZ Fitness Platform.**
+                        <br>
+                        Start your fitness journey with **intelligent guidance**, precise **body metrics**, and **immersive training modules**. We are your smart partner for a healthier life.
+                    </p>
+                    
+                    <a href="bmi.html" class="btn btn-lg fw-bold px-5 py-3 shadow-lg text-uppercase animate__animated animate__pulse animate__infinite" 
+                       style="background-color: #10b981; color: var(--bg-dark); transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='var(--accent-blue)'; this.style.color='white';" 
+                       onmouseout="this.style.backgroundColor='#10b981'; this.style.color='var(--bg-dark)';">
+                        <i class="fas fa-play me-2"></i> Access Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border-color: #2d3748; margin-top: 50px; margin-bottom: 50px;">
+    
+    <section id="features" class="pb-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-white animate__animated animate__fadeInDown">
+                <i class="fas fa-rocket me-2" style="color: var(--accent-blue);"></i> CORE FITNESS MODULES
+            </h2>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 text-center">
+                
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <a href="bmi.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card" style="border-top: 5px solid #0ea5e9 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-calculator fa-3x mb-3" style="color: #0ea5e9;"></i>
+                                <h5 class="card-title fw-bold text-white">1. BMI COUNT</h5>
+                                <p class="card-text text-muted">Precise Body Mass Index calculation for health metrics.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <a href="3DMuscle.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card" style="border-top: 5px solid #10b981 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-dumbbell fa-3x mb-3" style="color: #10b981;"></i>
+                                <h5 class="card-title fw-bold text-white">2. 3D MUSCLE MAP</h5>
+                                <p class="card-text text-muted">Visualize target muscle groups with an interactive 3D model.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <a href="instructions.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card" style="border-top: 5px solid #f59e0b !important;">
+                            <div class="card-body">
+                                <i class="fas fa-video fa-3x mb-3" style="color: #f59e0b;"></i>
+                                <h5 class="card-title fw-bold text-white">3. TRAINING VIDEOS</h5>
+                                <p class="card-text text-muted">Follow step-by-step video instructions for perfect form.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+                    <a href="ai-chat.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card" style="border-top: 5px solid #ef4444 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-robot fa-3x mb-3" style="color: #ef4444;"></i>
+                                <h5 class="card-title fw-bold text-white">4. AI ASSISTANT</h5>
+                                <p class="card-text text-muted">24/7 support for fitness Q&A and personalized advice.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 1.0s;">
+                    <a href="game.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-lg border-0 bg-dark text-white feature-card" style="border-top: 5px solid #8b5cf6 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-gamepad fa-3x mb-3" style="color: #8b5cf6;"></i>
+                                <h5 class="card-title fw-bold text-white">5. FITNESS GAME</h5>
+                                <p class="card-text text-muted">Make exercising fun and engaging with our interactive game.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border-color: #2d3748; margin-top: 50px; margin-bottom: 50px;">
+
+    <section id="quick-guide" class="pb-5">
+        <div class="container">
+            <h3 class="fw-bold mb-4 text-white animate__animated animate__fadeInLeft">
+                <i class="fas fa-map-marked-alt me-2" style="color: #10b981;"></i> QUICK START GUIDANCE
+            </h3>
+            
+            <div class="row g-4 text-light">
+                <div class="col-md-4 animate__animated animate__slideInUp" style="animation-delay: 0.2s;">
+                    <div class="p-4 rounded shadow-sm" style="background-color: #1f2937; border-left: 5px solid #0ea5e9;">
+                        <span class="badge rounded-pill me-2 fs-5" style="background-color: #0ea5e9;">Step 1</span> 
+                        <p class="mt-2 mb-0 fw-bold text-white">Target Identification:</p>
+                        <p class="mb-0 text-muted">Use **3D Muscle Map** to find your desired muscle group.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__slideInUp" style="animation-delay: 0.4s;">
+                    <div class="p-4 rounded shadow-sm" style="background-color: #1f2937; border-left: 5px solid #10b981;">
+                        <span class="badge rounded-pill me-2 fs-5" style="background-color: #10b981;">Step 2</span> 
+                        <p class="mt-2 mb-0 fw-bold text-white">Instruction Access:</p>
+                        <p class="mb-0 text-muted">Navigate to **Steps Instruction** and select the body part.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__slideInUp" style="animation-delay: 0.6s;">
+                    <div class="p-4 rounded shadow-sm" style="background-color: #1f2937; border-left: 5px solid #f59e0b;">
+                        <span class="badge rounded-pill me-2 fs-5" style="background-color: #f59e0b;">Step 3</span> 
+                        <p class="mt-2 mb-0 fw-bold text-white">Execute Training:</p>
+                        <p class="mb-0 text-muted">Watch the **Video** and start your workout! <i class="fas fa-bolt ms-1"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main> -->
+
+
+<!-- before 2025/12/6 ver3 -->
+<!-- <main>
+        
+    <section class="spacer-50"></section>
+    <section id="introduction">
+        <div class="frame">
+            
+            <div class="row align-items-center mb-5 gx-5">
+                <div class="col-lg-5 text-center order-lg-1 order-2">
+                    <img src="svg/spongebob_home_1_1.png" alt="Spongebob 正在運動" class="v1 animate__animated animate__zoomIn" style="max-height: 400px; object-fit: contain;">
+                </div>
+                <div class="col-lg-7 order-lg-2 order-1 animate__animated animate__fadeInRight">
+                    <h1 class="display-4 fw-bold mb-3" style="color: #0b1220; border-bottom: 4px solid var(--accent-blue); display: inline-block; padding-bottom: 5px;">
+                        EZ FITNESS <span class="text-secondary"><br>// START exercise easily</br></span>
+                    </h1>
+                    <p class="lead text-dark mb-4">
+                        <i class="fas fa-bolt me-2" style="color: var(--accent-blue);"></i>
+                        **歡迎來到 EZ Fitness 網站！**
+                        <br>
+                        在這裡，您可以輕鬆開啟健身之旅，掌握身體數據，並享受專業的訓練指導。
+                        <br>
+                        我們是您通往更健康生活的智慧夥伴。
+                    </p>
+                    <a href="bmi.html" class="btn btn-lg fw-bold" style="background-color: var(--accent-blue); color: white; transition: all 0.3s;" onmouseover="this.style.backgroundColor='#0791bf'" onmouseout="this.style.backgroundColor='var(--accent-blue)'">
+                        <i class="fas fa-arrow-right me-2"></i> 立即開始
+                    </a>
+                </div>
+            </div>
+
+            <hr style="border-color: #e5e7eb;">
+            
+            <h2 class="text-center mt-5 mb-4" style="color: #0b1220;">
+                <i class="fas fa-list-ul me-2" style="color: var(--accent-blue);"></i> 網站核心功能
+            </h2>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 text-center">
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <a href="bmi.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-sm border-0" style="transition: transform 0.3s, box-shadow 0.3s; border-top: 5px solid #0ea5e9 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-weight-hanging fa-3x mb-3" style="color: #0ea5e9;"></i>
+                                <h5 class="card-title fw-bold text-dark">1. BMI 計算</h5>
+                                <p class="card-text text-muted">快速掌握身體質量指數</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <a href="3DMuscle.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-sm border-0" style="transition: transform 0.3s, box-shadow 0.3s; border-top: 5px solid #10b981 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-running fa-3x mb-3" style="color: #10b981;"></i>
+                                <h5 class="card-title fw-bold text-dark">2. 3D 肌肉圖</h5>
+                                <p class="card-text text-muted">視覺化了解目標肌群</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <a href="instructions.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-sm border-0" style="transition: transform 0.3s, box-shadow 0.3s; border-top: 5px solid #f59e0b !important;">
+                            <div class="card-body">
+                                <i class="fas fa-video fa-3x mb-3" style="color: #f59e0b;"></i>
+                                <h5 class="card-title fw-bold text-dark">3. 訓練影片</h5>
+                                <p class="card-text text-muted">跟隨步驟教學影片訓練</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+                    <a href="ai-chat.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-sm border-0" style="transition: transform 0.3s, box-shadow 0.3s; border-top: 5px solid #ef4444 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-robot fa-3x mb-3" style="color: #ef4444;"></i>
+                                <h5 class="card-title fw-bold text-dark">4. AI 助理</h5>
+                                <p class="card-text text-muted">24/7 健身問答與支援</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col animate__animated animate__fadeInUp" style="animation-delay: 1.0s;">
+                    <a href="game.html" class="card-link-hover">
+                        <div class="card h-100 p-3 shadow-sm border-0" style="transition: transform 0.3s, box-shadow 0.3s; border-top: 5px solid #8b5cf6 !important;">
+                            <div class="card-body">
+                                <i class="fas fa-gamepad fa-3x mb-3" style="color: #8b5cf6;"></i>
+                                <h5 class="card-title fw-bold text-dark">5. 趣味遊戲</h5>
+                                <p class="card-text text-muted">用遊戲輕鬆運動</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <hr style="border-color: #e5e7eb;" class="mt-5">
+
+            <div class="mt-5">
+                <h3 class="fw-bold mb-3" style="color: #0b1220;"><i class="fas fa-map-marker-alt me-2" style="color: var(--accent-blue);"></i> 快速導覽步驟</h3>
+                <ol class="list-unstyled row g-3 text-dark">
+                    <li class="col-md-4">
+                        <span class="badge rounded-pill me-2" style="background-color: var(--accent-blue);">Step 1</span> **3D Muscle** 尋找目標肌群
+                    </li>
+                    <li class="col-md-4">
+                        <span class="badge rounded-pill me-2" style="background-color: var(--accent-blue);">Step 2</span> 進入 **Steps Instruction** 選擇部位
+                    </li>
+                    <li class="col-md-4">
+                        <span class="badge rounded-pill me-2" style="background-color: var(--accent-blue);">Step 3</span> 觀看**影片/步驟** 開始訓練！
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+</main> -->
+
+
+
+
+<!-- before 2025/12/6 0429pm ver2 -->
+<!-- <section class="spacer-50"></section>
         <section id="introduction">
             <div class="frame">
                 <h2>Introduction</h2>
+
+
+                <div class="">
+                    <img src="svg/spongebob_home_1_1.png" alt="" class="">
+                </div>
+
+
                 <p>Welcome to our 'EZ Fitness' website.<br>
                    This is a fitness teaching website that you can easily get started and live a healthier life.<br><br>
                     Follow the steps :<br>
@@ -64,72 +511,10 @@
                     YOU SUCCESS
                 </p>
             </div>
-        </section>
-<!-- 
-        <section id="introduction" class="text-center">
-            <div class="frame p-5 shadow-lg" style="border: 2px solid var(--accent-blue); background-color: #f8fafc;">
-                <h2 class="animate__animated animate__backInDown display-3 fw-bold mb-4"
-                    style="color: #0b1220; letter-spacing: 6px;">
-                    EZ FITNESS <span style="color: var(--accent-blue);">// INITIATE</span>
-                </h2>
-
-                <div class="lead text-dark mb-5" style="border-left: 5px solid #0ea5e9;  padding-left: 20px;">
-                    <p class="animate__animated animate__fadeInDown animate__delay-1s fs-4 fw-light">
-                        [ ACCESS GRANTED ]
-                    </p>
-                    <p class="animate__animated animate__fadeInDown animate__delay-2s fs-5">
-                        我們提供**視覺化**、**精準化**的健身體驗，助您解鎖身體的無限潛能。
-                    </p>
-                    <p class="animate__animated animate__fadeInDown animate__delay-2-5s fs-5">
-                        **EZ Fitness**，您的**專屬體能數據庫**與**訓練導航系統**。
-                    </p>
-                </div>
-
-                <p class="fw-bold fs-4 mb-4 animate__animated animate__flash animate__delay-3s" style="color: #ef4444;">
-                    /// 系統導航：七步啟動訓練模組 ///
-                </p>
-
-                <div class="instruction-list text-start text-dark mx-auto" style="max-width: 650px;">
-                    <ul class="list-unstyled row g-3">
-                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInLeft animate__delay-4s">
-                            <span class="badge bg-primary me-2">01</span> **視覺定位**：進入 **3D Muscle** 鎖定目標肌群
-                        </li>
-                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInRight animate__delay-4-5s">
-                            <span class="badge bg-primary me-2">02</span> **區域選擇**：從左側選單選擇身體部位
-                        </li>
-                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInLeft animate__delay-5s">
-                            <span class="badge bg-primary me-2">03</span> **肌群確認**：點擊選擇特定**肌肉**名稱
-                        </li>
-                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInRight animate__delay-5-5s">
-                            <span class="badge bg-primary me-2">04</span> **項目檢索**：點選一個**訓練項目**
-                        </li>
-                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInLeft animate__delay-6s">
-                            <span class="badge bg-primary me-2">05</span> **影音學習**：觀看高畫質**示範影片**
-                        </li>
-                        <li class="col-md-6 mb-2 animate__animated animate__lightSpeedInRight animate__delay-6-5s">
-                            <span class="badge bg-primary me-2">06</span> **步驟解析**：閱讀**詳細步驟說明**
-                        </li>
-                        <li class="col-12 mb-2 animate__animated animate__bounceInDown animate__delay-7s text-center">
-                            <span class="badge bg-danger me-2">07</span> **ACTION**：立即實踐！<i
-                                class="fas fa-bolt ms-2"></i>
-                        </li>
-                    </ul>
-                </div>
-
-                <p class="animate__animated animate__rubberBand animate__delay-8s mt-5 fs-2 fw-bold"
-                    style="color: var(--accent-blue);">
-                    // MISSION COMPLETE //
-                </p>
-
-            </div>
         </section> -->
-        
-    </main>
 
-    <!-- <footer>
+
+
+<!-- <footer>
         <p>2025 EZ Fitness Start.</p>
     </footer> -->
-
-</body>
-
-</html>
