@@ -638,3 +638,19 @@ footer {
 .iframe-no-border {
     border: 0 !important;
 }
+
+
+
+
+/* 2025/12/11 12:00pm */
+/* 確保所有包裹卡片的鏈接都沒有底線 */
+.card-link-hover,
+.no-underline {
+    text-decoration: none !important;
+}
+
+/* 確保卡片內的文字也繼承無底線的設定 */
+.card-link-hover .card-title,
+.card-link-hover .card-text {
+    text-decoration: none !important;
+}
