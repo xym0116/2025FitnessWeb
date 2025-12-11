@@ -86,7 +86,7 @@
                                 <div class="alert alert-info w-100 mb-0"
                                     style="border-left: 4px solid var(--accent-blue);">
                                     <strong>caculating...</strong>
-                                    <div>enter your height and weight then press「count BMI」。</div>
+                                    <div>enter your height and weight then press「count BMI」</div>
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                 const height = parseFloat(document.getElementById('height').value);
 
                 if (!weight || !height || weight <= 0 || height <= 0) {
-                    result.innerHTML = '<div class="alert alert-danger w-100 mb-0">請輸入正確的體重與身高（數值需大於 0）。</div>';
+                    result.innerHTML = '<div class="alert alert-danger w-100 mb-0">Please enter your correct weight and height.<br> The values ​​must be greater than 0.</div>';
                     return;
                 }
 
@@ -199,8 +199,8 @@
                 form.reset();
                 result.innerHTML = `
                     <div class="alert alert-info w-100 mb-0" style="border-left: 4px solid var(--accent-blue);">
-                        <strong>等待輸入...</strong>
-                        <div>請輸入數值後點擊「計算 BMI」。</div>
+                        <strong>caculating...</strong>
+                        <div>enter your height and weight then press「count BMI」</div>
                     </div>
                 `;
             });
