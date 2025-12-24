@@ -5,16 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chat - EZ Fitness</title>
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font-awesome -->
     <script src="https://kit.fontawesome.com/04845a1939.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* #ai-chat h2 {
-            margin-bottom: 8px !important;
-        } */
-
         .chat-container {
             display: flex;
             flex-direction: column;
@@ -317,8 +311,6 @@
         <section class="spacer-50"></section>
         <section id="ai-chat">
             <div class="frame">
-                <!-- <h2>AI Fitness Chat</h2> -->
-                <!-- <p>Get personalized fitness advice from our AI assistant. Ask about exercises, nutrition, and health tips!</p> -->
 
                 <div class="chat-container">
                     <div class="chat-header">
@@ -352,9 +344,6 @@
         </section>
     </main>
 
-    <!-- <footer>
-        <p>2025 EZ Fitness Start.</p>
-    </footer> -->
 
     <script>
         (function () {
@@ -363,7 +352,6 @@
             const sendBtn = document.getElementById('sendBtn');
             const clearBtn = document.getElementById('clearBtn');
 
-            // Fitness-related knowledge base for local responses
             const fitnessResponses = {
                 chest: [
                     "Great question! For chest exercises, try: Push-ups, Bench Press, Dumbbell Flyes, Cable Crossovers, or Chest Press machines. Start with 3 sets of 8-12 reps.",
@@ -410,18 +398,15 @@
                 ]
             };
 
-            // Function to get AI response based on keywords
             function getAIResponse(userMessage) {
                 const message = userMessage.toLowerCase();
 
-                // Check for keywords and return relevant responses
                 for (const [key, responses] of Object.entries(fitnessResponses)) {
                     if (message.includes(key)) {
                         return responses[Math.floor(Math.random() * responses.length)];
                     }
                 }
 
-                // Default responses
                 const defaultResponses = [
                     "That's a great fitness question! I specialize in exercises, workouts, nutrition, and fitness tips. Ask me about any specific muscle group or workout routine!",
                     "I'm here to help with fitness advice! Try asking about specific exercises like 'chest', 'back', 'legs', or 'nutrition'.",
@@ -432,7 +417,6 @@
                 return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
             }
 
-            // Add message to chat
             function addMessage(content, isUser) {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
@@ -453,7 +437,6 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            // Remove empty state
             function removeEmptyState() {
                 const emptyState = chatMessages.querySelector('.empty-state');
                 if (emptyState) {
@@ -461,7 +444,6 @@
                 }
             }
 
-            // Show typing indicator
             function showTypingIndicator() {
                 const typingDiv = document.createElement('div');
                 typingDiv.className = 'message bot';
@@ -478,7 +460,6 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
 
-            // Remove typing indicator
             function removeTypingIndicator() {
                 const typing = document.getElementById('typingIndicator');
                 if (typing) {
@@ -486,14 +467,12 @@
                 }
             }
 
-            // Escape HTML to prevent XSS
             function escapeHtml(text) {
                 const div = document.createElement('div');
                 div.textContent = text;
                 return div.innerHTML;
             }
 
-            // Handle sending message
             function sendMessage() {
                 const message = userInput.value.trim();
                 if (!message) return;
@@ -504,7 +483,6 @@
                 userInput.focus();
                 sendBtn.disabled = true;
 
-                // Simulate bot thinking
                 setTimeout(() => {
                     removeTypingIndicator();
                     const response = getAIResponse(message);
@@ -515,10 +493,8 @@
                 showTypingIndicator();
             }
 
-            // Send button click
             sendBtn.addEventListener('click', sendMessage);
 
-            // Enter key to send
             userInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
@@ -526,7 +502,6 @@
                 }
             });
 
-            // Clear chat
             clearBtn.addEventListener('click', () => {
                 chatMessages.innerHTML = `
                     <div class="empty-state">
@@ -538,7 +513,6 @@
                 userInput.focus();
             });
 
-            // Focus input on load
             userInput.focus();
         })();
     </script>
