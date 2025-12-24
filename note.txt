@@ -1,0 +1,6 @@
+git add .
+git commit -m "blabla"
+git push
+
+git --version
+git clone https://github.com/xym0116/2025fitnessWeb.git
