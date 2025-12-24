@@ -40,10 +40,6 @@
         <section class="spacer-50"></section>
         <section id="bmi">
             <div class="frame p-4">
-                <!-- <h1 class="text-center mb-4" style="color: #0f1724; font-weight: 700;">身體質量指數 (BMI) 計算器</h1>
-                <p class="lead text-center mb-5" style="color: var(--muted-gray);">
-                    輸入您的體重與身高（公斤 / 公分），系統將計算 BMI 並顯示建議範圍。
-                </p> -->
 
                 <!-- 想加圖片 -->
                 <div class="text-center mb-4">
@@ -158,7 +154,6 @@
                 const bmiRounded = Math.round(bmi * 10) / 10;
                 const cls = classify(bmi);
 
-                // 準備初始顯示 (避免在計算時出現空缺)
                 result.innerHTML = `
                     <div class="bmi-result-card text-center" style="background-color: ${cls.color}1A; color: ${cls.color}; opacity: 0;">
                         <strong><span id="bmi-value-display">0.0</span></strong>
@@ -166,14 +161,12 @@
                     </div>
                 `;
 
-                // 獲取結果卡片
                 const resultCard = result.querySelector('.bmi-result-card');
-                resultCard.classList.add(cls.cls); // 添加特定動畫類別
+                resultCard.classList.add(cls.cls);
 
-                // 數值計數動畫
                 const display = document.getElementById('bmi-value-display');
                 let current = 0;
-                const step = (bmiRounded / 60); // 60 步完成動畫
+                const step = (bmiRounded / 60);
                 let i = 0;
 
                 const timer = setInterval(() => {
@@ -186,9 +179,8 @@
                     }
 
                     display.textContent = Math.round(current * 10) / 10;
-                }, 10); // 每 10 毫秒更新
+                }, 10);
 
-                // 設置延遲，讓卡片在計數動畫完成後顯示
                 setTimeout(() => {
                     resultCard.style.opacity = '1';
                 }, 100);
@@ -205,7 +197,6 @@
                 `;
             });
 
-            // 初始化時移除 frame 中的 h2 樣式，避免衝突
             document.querySelectorAll('.frame h2').forEach(h2 => {
                 h2.style.borderBottom = 'none';
                 h2.style.paddingBottom = '0';
